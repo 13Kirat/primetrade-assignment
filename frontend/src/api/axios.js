@@ -5,7 +5,8 @@
 import axios from 'axios'
 import { getToken, removeToken } from '../utils/token'
 
-const API_BASE_URL = 'https://primetrade-assignment-production.up.railway.app/api/v1'
+// Use environment variable or fallback to localhost
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1'
 
 // Create axios instance
 const axiosInstance = axios.create({
@@ -13,6 +14,7 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true, // Important for CORS with credentials
 })
 
 // Request interceptor - attach JWT token
