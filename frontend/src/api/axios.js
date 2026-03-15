@@ -5,7 +5,7 @@
 import axios from 'axios'
 import { getToken, removeToken } from '../utils/token'
 
-const API_BASE_URL = 'http://localhost:8000/api/v1'
+const API_BASE_URL = 'https://primetrade-assignment-production.up.railway.app/api/v1'
 
 // Create axios instance
 const axiosInstance = axios.create({
