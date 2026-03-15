@@ -22,24 +22,15 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# CORS middleware configuration
-# Allow requests from frontend domains
-origins = [
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
     "http://localhost:3000",
     "http://localhost:5173",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
-    # Add your production frontend URLs here
     "https://primetrade-assignment-plum.vercel.app",
-]
-
-# If DEBUG mode, allow all origins (development only)
-if settings.DEBUG:
-    origins = ["*"]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
